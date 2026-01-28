@@ -41,12 +41,12 @@
 
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">建物名</th>
-                    <td class="confirm-table__data">{{ $contact['building'] }}</td>
+                    <td class="confirm-table__data">{{ $contact['building']}}</td>
                 </tr>
 
                 <tr>
                     <th class="confirm-table__header">お問い合わせの種類</th>
-                    <td class="confirm-table__data">{{ $contact['categories'] }}</td>
+                    <td class="confirm-table__data">{{ $contact['category_content'] }}</td>
                 </tr>
 
                 <tr class="confirm-table__row">
@@ -58,7 +58,7 @@
 
             <div class="form__button">
                 <button type="submit" class="form__button--submit">送信</button>
-                <button type="submit" formaction="/tanks/back" class="form__button--back">修正</button>
+                <button type="submit" formaction="/" class="form__button--back">修正</button>
             </div>
         </div>
     </form>

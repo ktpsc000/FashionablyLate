@@ -17,6 +17,7 @@ class Contact extends Model
         'email',
         'tel',
         'address',
+        'building',
         'detail',];
 
     public function category()
