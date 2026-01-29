@@ -76,7 +76,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--email">
-                    <input type="email" name="email" placeholder="例：test@example.com" value="{{ $contact['email'] ?? old('email') }}">
+                    <input type="text" name="email" placeholder="例：test@example.com" value="{{ $contact['email'] ?? old('email') }}">
                 </div>
             </div>
             <div class="form__error">

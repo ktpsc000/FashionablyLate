@@ -9,12 +9,14 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
+    // Contactアクセス
     public function index()
     {
         $categories = Category::all();
         return view('index', compact('categories'));
     }
 
+    // Confirmアクセス
     public function confirm(ContactRequest $request)
     {
 
@@ -27,6 +29,7 @@ class ContactController extends Controller
         return view('confirm', compact('contact'));
     }
 
+    // Thanksアクセス
     public function thanks(Request $request)
     {
         $contact = $request->session()->get('contact', []);
@@ -35,6 +38,7 @@ class ContactController extends Controller
         return view('thanks');
     }
 
+    // 修正ボタン対応
     public function back(Request $request)
     {
         $contact = $request->session()->get('contact', []);

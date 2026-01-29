@@ -15,7 +15,17 @@ use App\Http\Controllers\AuthController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//お問い合わせフォーム
 Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 Route::post('/thanks', [ContactController::class, 'thanks'])->name('contact.thanks');
-Route::post('/', [ContactController::class, 'back']);
+Route::post('/', [ContactController::class, 'back'])->name('contact.index');;
+
+//登録・ログイン機能
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::middleware('auth')->group(function(){
+    Route::get('/admin', [AuthController::class, 'admin'])->name('admin');
+});

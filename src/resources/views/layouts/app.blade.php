@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +16,25 @@
     <header class="header">
         <div class="header__inner">
             <a class="header__logo" href="{{ url('/') }}">FashionablyLate</a>
+
+
+            <nav class="header__nav">
+                <ul class="header__nav--list">
+                    <li class="header__nav--item"><a href="{{ url('/register') }}">register</a></li>
+                    <li class="header__nav--item"><a href="{{ url('/login') }}">login</a></li>
+
+                    @if (Auth::check())
+                    <li class="header__nav--item">
+                        <form class="form__logout" action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="form__logout--button">ログアウト</button>
+                        </form>
+                    </li>
+                    @endif
+                </ul>
+            </nav>
         </div>
+
     </header>
 
     <main>
