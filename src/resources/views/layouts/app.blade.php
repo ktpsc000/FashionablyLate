@@ -17,11 +17,15 @@
         <div class="header__inner">
             <a class="header__logo" href="{{ url('/') }}">FashionablyLate</a>
 
-
+            @if (!request()->routeIs('contact.*'))
             <nav class="header__nav">
                 <ul class="header__nav--list">
+                    @if (request()->routeIs('auth.login'))
                     <li class="header__nav--item"><a href="{{ url('/register') }}">register</a></li>
+                    @endif
+                    @if (request()->routeIs('auth.register'))
                     <li class="header__nav--item"><a href="{{ url('/login') }}">login</a></li>
+                    @endif
 
                     @if (Auth::check())
                     <li class="header__nav--item">
@@ -33,8 +37,8 @@
                     @endif
                 </ul>
             </nav>
+            @endif
         </div>
-
     </header>
 
     <main>

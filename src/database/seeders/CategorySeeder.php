@@ -15,23 +15,23 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->updateOrInsert(
-            ['id' => '1'],
+            ['id' => 1],
             ['content' => '商品のお届けについて']
         );
         DB::table('categories')->updateOrInsert(
-            ['id' => '2'],
+            ['id' => 2],
             ['content' => '商品の交換について']
         );
         DB::table('categories')->updateOrInsert(
-            ['id' => '3'],
+            ['id' => 3],
             ['content' => '商品トラブル']
         );
         DB::table('categories')->updateOrInsert(
-            ['id' => '4'],
+            ['id' => 4],
             ['content' => 'ショップへのお問い合わせ']
         );
         DB::table('categories')->updateOrInsert(
-            ['id' => '5'],
+            ['id' => 5],
             ['content' => 'その他']
         );
     }

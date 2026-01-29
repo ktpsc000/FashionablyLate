@@ -25,31 +25,17 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'first_name' => 'required|string|max:8',
+            'last_name' => 'required|string|max:8',
             'gender' => 'required',
             'email' => 'required|email',
             'tel1' => 'required|regex:/^[0-9]+$/|max:5',
             'tel2' => 'required|regex:/^[0-9]+$/|max:5',
             'tel3' => 'required|regex:/^[0-9]+$/|max:5',
             'address' => 'required',
-            'categry_id' => 'required',
+            'category_id' => 'required',
             'detail' => 'required|string|max:120',
         ];
-    }
-
-    public function withValidator(Validator $validator)
-    {
-        //お名前の文字数制限
-        $validator->after(function ($validator) {
-            $fullname = $this->first_name . $this->last_name;
-            if (mb_strlen($fullname) > 8){
-                $validator->errors()->add(
-                    'name','お名前は8文字以内で入力してください'
-                );
-            }
-        });
-
     }
 
     public function messages()
@@ -57,6 +43,8 @@ class ContactRequest extends FormRequest
         return [
             'first_name.required' => '姓を入力してください',
             'last_name.required' => '名を入力してください',
+            'first_name.max' => '姓は8文字以内で入力してください',
+            'last_name.max' => '名は8文字以内で入力してください',
 
             'gender.required' => '性別を選択してください',
 
@@ -76,7 +64,7 @@ class ContactRequest extends FormRequest
             'tel3.max' => '電話番号は5桁まで数字で入力してください',
 
             'address.required' => '住所を入力してください',
-            'categry_id.required' => 'お問い合わせの種類を選択してください',
+            'category_id.required' => 'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせ内容を入力してください',
             'detail.max' => 'お問い合わせ内容は120文字以内で入力してください',
         ];

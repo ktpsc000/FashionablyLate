@@ -27,15 +27,12 @@
                 </div>
             </div>
             <div class="form__error">
-                @php
-                    $nameFields = ['first_name', 'last_name', 'name'];
-                @endphp
-                @foreach ($nameFields as $field)
-                    @if ($errors->has($field))
-                        {{ $errors->first($field) }}
-                        @break
-                    @endif
-                @endforeach
+                @error('first_name')
+                {{ $message }}
+                @enderror
+                @error('last_name')
+                {{ $message }}
+                @enderror
             </div>
         </div>
 
@@ -101,15 +98,15 @@
                     <input type="tel" name="tel3" placeholder="例：5678" value="{{ $contact['tel3'] ?? old('tel3') }}">
                 </div>
                 <div class="form__error">
-                    @php
-                        $telFields = ['tel1', 'tel2', 'tel3', 'tel'];
-                    @endphp
-                    @foreach ($telFields as $field)
-                        @if ($errors->has($field))
-                            {{ $errors->first($field) }}
-                            @break
-                        @endif
-                    @endforeach
+                    @error('tel1')
+                    {{ $message }}
+                    @enderror
+                    @error('tel2')
+                    {{ $message }}
+                    @enderror
+                    @error('tel3')
+                    {{ $message }}
+                    @enderror
                 </div>
 
             </div>
@@ -154,9 +151,9 @@
             <div class="form__group-content">
                 <div class="form__input--select">
                     @php
-                        $selectedCategory = session('contact.categry_id', old('categry_id'));
+                        $selectedCategory = session('contact.category_id', old('category_id'));
                     @endphp
-                    <select name="categry_id">
+                    <select name="category_id">
                         <option value="" disabled selected hidden>選択してください</option>
                         @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $selectedCategory == $category->id ? 'selected' : '' }}>
@@ -167,7 +164,7 @@
                 </div>
             </div>
             <div class="form__error">
-                @error('categry_id')
+                @error('category_id')
                 {{ $message }}
                 @enderror
             </div>
