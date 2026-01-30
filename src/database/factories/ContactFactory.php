@@ -16,7 +16,6 @@ class ContactFactory extends Factory
 
     public function definition()
     {
-        // $faker = FakerFactory::create('ja_JP');
 
         return [
             'category_id' => Category::inRandomOrder()->first()->id,
