@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
-<style>
-    svg.w-5.h-5 {
-        width: 30px;
-        height: 30px;
-    }
-</style>
+
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -58,12 +53,33 @@
             <a href="/admin">エクスポート</a>
         </div>
         <div class="pagination">
-            {{ $contacts->links() }}
+            {{ $contacts->links('vendor.pagination.bootstrap-4') }}
         </div>
     </div>
 
+    <!-- お問合せ内容テーブル -->
+    <div class="contact-table">
+        <table class="contact-table__inner">
+            <tr class="contact-table__row">
+                <th class="contact-form__header">
+                    <span class="contact-form__header-span">お名前</span>
+                    <span class="contact-form__header-span">性別</span>
+                    <span class="contact-form__header-span">メールアドレス</span>
+                    <span class="contact-form__header-span">お問い合わせの種類</span>
+                </th>
+            </tr>
 
-
+            @foreach($contacts as $contact)
+            <tr class="contact-table__row">
+                <td class="contact-table__item">
+                    <div class="contact-table__item-name">
+                        {{ $contact->first_name }} {{$contact->last_name}}
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </div>
 
 @endsection
