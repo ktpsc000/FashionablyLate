@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
+use App\Models\Contact;
+use App\Models\Category;
 
 
 class AuthController extends Controller
@@ -38,8 +39,28 @@ class AuthController extends Controller
     }
 
     // Adminアクセス
-    public function admin()
+    public function admin(Request $request)
     {
-        return view('admin');
+        $query = Contact::with('category');
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        if ($request->filled('keyword')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('first_name', 'like', '%' . $request->keyword . '%')
+                ->orWhere('last_name', 'like', '%' . $request->keyword . '%')
+                ->orWhere('email', 'like', '%' . $request->keyword . '%');
+            });
+        }
+
+        $contacts = $query->get();
+        $contacts = Contact::Paginate(7);
+        $categories = Category::all();
+
+        return view('admin', compact('contacts', 'categories'));
     }
+
+
 }
