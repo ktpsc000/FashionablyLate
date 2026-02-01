@@ -14,9 +14,11 @@
 <body>
     <main>
         <div class="thanks__content">
-            <h2 class="thanks__title">Thank you</h2>
-            <p class="thanks__text">お問い合わせありがとうございました</p>
-            <input class="thanks__button" type="button" value="HOME" onclick="location.href='{{ url('/') }}'">
+            <p class="thanks__title">Thank you</p>
+            <div class="thanks__content-main">
+                <p class="thanks__text">お問い合わせありがとうございました</p>
+                <input class="thanks__button" type="button" value="HOME" onclick="location.href='{{ url('/') }}'">
+            </div>
         </div>
     </main>
 </body>

@@ -7,7 +7,7 @@
 @section('content')
 <div class="confirm__content">
     <div class="confirm__heading">
-        <h2>Confirm</h2>
+        <p>Confirm</p>
     </div>
     <form class="form" action="/thanks" method="post">
         @csrf
@@ -44,7 +44,7 @@
                     <td class="confirm-table__data">{{ $contact['building']}}</td>
                 </tr>
 
-                <tr>
+                <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせの種類</th>
                     <td class="confirm-table__data">{{ $contact['category_content'] }}</td>
                 </tr>
@@ -58,7 +58,7 @@
 
             <div class="form__button">
                 <button type="submit" class="form__button--submit">送信</button>
-                <button type="submit" formaction="/" class="form__button--back">修正</button>
+                <a href="/" class="form__button--back">修正</a>
             </div>
         </div>
     </form>
