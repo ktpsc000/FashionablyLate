@@ -8,6 +8,7 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
+    // 検索用
     public function search(Request $request)
     {
         $contacts = Contact::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->GenderSearch($request->gender)->DateSearch($request->date)->paginate(7)->withQueryString();
@@ -16,11 +17,51 @@ class AdminController extends Controller
         return view('admin', compact('contacts', 'categories'));
     }
 
+    // 削除用
     public function destroy(Request $request)
     {
         Contact::findOrFail($request->id)->delete();
         return redirect('/admin');
     }
 
+
+    // エクスポート用
+    public function export(Request $request)
+    {
+        $contacts = Contact::with('category')
+            ->CategorySearch($request->category_id)
+            ->KeywordSearch($request->keyword)
+            ->GenderSearch($request->gender)
+            ->DateSearch($request->created_at)
+            ->get();
+
+        $csvHeader = [
+            'お名前',
+            '性別',
+            'メールアドレス',
+            'お問い合わせ種類',
+        ];
+
+        $response = new \Symfony\Component\HttpFoundation\StreamedResponse(function () use ($contacts, $csvHeader) {
+            $handle = fopen('php://output', 'w');
+            fputs($handle, "\xEF\xBB\xBF");
+            fputcsv($handle, $csvHeader);
+            foreach ($contacts as $contact) {
+                fputcsv($handle, [
+                    $contact->first_name . ' ' . $contact->last_name,
+                    [1=>'男性',2=>'女性',3=>'その他'][$contact->gender],
+                    $contact->email,
+                    $contact->category->content,
+                ]);
+            }
+            fclose($handle);
+        });
+        $response->headers->set('Content-Type', 'text/csv');
+        $response->headers->set(
+            'Content-Disposition',
+            'attachment; filename="contacts.csv"'
+        );
+        return $response;
+    }
 
 }

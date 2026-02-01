@@ -55,7 +55,7 @@
     <!-- エクスポート -->
     <div class="content__middle">
         <div class="export">
-            <a href="/admin">エクスポート</a>
+            <a href="{{ url('/export') }}?{{ request()->getQueryString() }}">エクスポート</a>
         </div>
         <div class="pagination">
             {{ $contacts->links('vendor.pagination.bootstrap-4') }}
