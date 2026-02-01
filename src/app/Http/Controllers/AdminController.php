@@ -11,17 +11,24 @@ class AdminController extends Controller
     // 検索用
     public function search(Request $request)
     {
-        $contacts = Contact::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->GenderSearch($request->gender)->DateSearch($request->date)->paginate(7)->withQueryString();
+        $contacts = Contact::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->GenderSearch($request->gender)->DateSearch($request->created_at)->paginate(7)->withQueryString();
         $categories = Category::all();
 
         return view('admin', compact('contacts', 'categories'));
     }
 
-    // 削除用
-    public function destroy(Request $request)
+    public function reset()
     {
-        Contact::findOrFail($request->id)->delete();
         return redirect('/admin');
+    }
+
+    // 削除用
+    public function delete(Request $request)
+    {
+
+        Contact::findOrFail($request->id)->delete();
+
+        return redirect()->back();
     }
 
 

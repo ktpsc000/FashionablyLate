@@ -25,11 +25,12 @@ Route::post('/', [ContactController::class, 'back'])->name('contact.index');;
 //登録・ログイン機能
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.login');
 
 Route::middleware('auth')->group(function(){
     Route::get('/admin', [AuthController::class, 'admin']);
     Route::get('/search',[AdminController::class, 'search']);
+    Route::get('/reset',[AdminController::class, 'reset']);
     Route::get('/export',[AdminController::class, 'export']);
-    Route::delete('/delete', [AdminController::class, 'destroy']);
+    Route::delete('/delete', [AdminController::class, 'delete']);
 });

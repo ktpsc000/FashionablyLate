@@ -33,7 +33,6 @@ class ContactController extends Controller
     public function thanks(Request $request)
     {
         $contact = $request->session()->get('contact', []);
-        dd($contact);
         $request->session()->forget('contact');
         Contact::create($contact);
         return view('thanks');

@@ -22,7 +22,7 @@
 
             <!-- 性別選択 -->
             <select class="search-form__item-select--gender" name="gender">
-                <option value="" disabled {{ request('gender') === null ? 'selected' : '' }}>性別</option>
+                <option value="" disabled selected hidden {{ request('gender') === null ? 'selected' : '' }}>性別</option>
                 <option value="" {{ request('gender') === '' ? 'selected' : '' }}>全て</option>
                 <option value="1" {{ request('gender') == '1' ? 'selected' : '' }}>男性</option>
                 <option value="2" {{ request('gender') == '2' ? 'selected' : '' }}>女性</option>
@@ -33,7 +33,7 @@
 
             <!-- お問い合わせ種類選択 -->
             <select class="search-form__item-select--category" name="category_id">
-                <option value="" disabled {{ request('category_id') === null ? 'selected' : '' }}>お問い合わせの種類</option>
+                <option value="" disabled selected hidden {{ request('category_id') === null ? 'selected' : '' }}>お問い合わせの種類</option>
                 @foreach ($categories as $category)
                 <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
                     {{ $category->content }}
@@ -48,7 +48,7 @@
             <button class="search-form__item-button" type="submit">検索</button>
 
             <!-- リセットボタン -->
-            <a href="/admin" class="search-form__item-button--reset">リセット</a>
+            <a href="/reset" class="search-form__item-button--reset">リセット</a>
         </div>
     </form>
 
@@ -75,20 +75,17 @@
             @foreach($contacts as $contact)
             <tr class="contact-table__row">
 
-                <!-- お名前入力 -->
+                <!-- お名前 -->
                 <td class="contact-table__item">
                     <div class="contact-table__item-name">
-                        {{ $contact->first_name }} {{$contact->last_name}}
+                        {{ $contact->first_name . '　' . $contact->last_name}}
                     </div>
                 </td>
 
                 <!-- 性別 -->
                 <td class="contact-table__item">
                     <div class="contact-table__item-gender">
-                        @php
-                        $genders = [1 => '男性', 2 => '女性', 3 => 'その他'];
-                        @endphp
-                        <p>{{ $genders[$contact->gender] ?? '' }}</p>
+                        {{ [1=>'男性',2=>'女性',3=>'その他'][$contact->gender]}}
                     </div>
                 </td>
 
@@ -132,11 +129,11 @@
         <table class="modal-table">
             <tr class="modal-table__row">
                 <th class="modal-table__header">お名前</th>
-                <td class="modal-table__data">{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                <td class="modal-table__data">{{ $contact->first_name . '　' . $contact->last_name }}</td>
             </tr>
             <tr class="modal-table__row">
                 <th class="modal-table__header">性別</th>
-                <td class="modal-table__data">{{ [1=>'男性',2=>'女性',3=>'その他'][$contact->gender] ?? '' }}</td>
+                <td class="modal-table__data">{{ [1=>'男性',2=>'女性',3=>'その他'][$contact->gender]}}</td>
             </tr>
             <tr class="modal-table__row">
                 <th class="modal-table__header">メールアドレス</th>
@@ -163,6 +160,8 @@
                 <td class="modal-table__data">{{ $contact->detail }}</td>
             </tr>
         </table>
+
+        <!-- 削除ボタン -->
         <form class="delete-form" action="/delete" method="post">
             @csrf
             @method('DELETE')

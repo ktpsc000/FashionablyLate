@@ -27,7 +27,7 @@
                     <li class="header__nav--item"><a href="{{ url('/login') }}">login</a></li>
                     @endif
 
-                    @if (Auth::check())
+                    @if (Auth::check() && !request()->routeIs('auth.*'))
                     <li class="header__nav--item">
                         <form class="form__logout" action="/logout" method="post">
                             @csrf

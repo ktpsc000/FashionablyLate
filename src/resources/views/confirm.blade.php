@@ -16,12 +16,12 @@
 
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
-                    <td class="confirm-table__data">{{ $contact['first_name'] }} {{ $contact['last_name'] }}</td>
+                    <td class="confirm-table__data">{{ $contact['first_name'] . '　' . $contact['last_name'] }}</td>
                 </tr>
 
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">性別</th>
-                    <td class="confirm-table__data">{{ $contact['gender'] }}</td>
+                    <td class="confirm-table__data">{{ [1=>'男性',2=>'女性',3=>'その他'][$contact['gender']]}}</td>
                 </tr>
 
                 <tr class="confirm-table__row">

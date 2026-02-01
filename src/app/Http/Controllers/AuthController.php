@@ -22,7 +22,7 @@ class AuthController extends Controller
         return view('login');
     }
 
-    // Login認証エラーをパスワード下に表示
+    // Login認証エラーをパスワード下に表示(ログイン情報が登録されていません)
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
