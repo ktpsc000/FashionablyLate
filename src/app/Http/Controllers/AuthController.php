@@ -43,20 +43,7 @@ class AuthController extends Controller
     {
         $query = Contact::with('category');
 
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->category_id);
-        }
-
-        if ($request->filled('keyword')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('first_name', 'like', '%' . $request->keyword . '%')
-                ->orWhere('last_name', 'like', '%' . $request->keyword . '%')
-                ->orWhere('email', 'like', '%' . $request->keyword . '%');
-            });
-        }
-
-        $contacts = $query->get();
-        $contacts = Contact::Paginate(7);
+        $contacts = $query->paginate(7);
         $categories = Category::all();
 
         return view('admin', compact('contacts', 'categories'));

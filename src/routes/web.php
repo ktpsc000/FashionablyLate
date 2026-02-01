@@ -28,5 +28,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'authenticate']);
 
 Route::middleware('auth')->group(function(){
-    Route::get('/admin', [AuthController::class, 'admin'])->name('admin');
+    Route::get('/admin', [AuthController::class, 'admin']);
+    Route::get('/search',[AdminController::class, 'search']);
+    Route::delete('/delete', [AdminController::class, 'destroy']);
 });
