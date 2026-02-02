@@ -21,8 +21,8 @@
 | phpMyAdmin | http://localhost:8080 |
 
 ## 使用技術(実行環境)
-- php 8.1.34
-- laravel 8.83.29
+- PHP 8.1.34
+- Laravel 8.83.29
 - MySQL 8.0.26
 - nginx 1.21.1
 
