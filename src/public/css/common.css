@@ -19,3 +19,11 @@
 body {
     font-family: "Times New Roman", serif;
 }
+
+.header__nav{
+    padding: 1px 12px;
+    background-color: #827469;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

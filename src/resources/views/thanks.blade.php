@@ -17,7 +17,7 @@
             <p class="thanks__title">Thank you</p>
             <div class="thanks__content-main">
                 <p class="thanks__text">お問い合わせありがとうございました</p>
-                <input class="thanks__button" type="button" value="HOME" onclick="location.href='{{ url('/') }}'">
+                <a class="thanks__button" href="/">HOME</a>
             </div>
         </div>
     </main>

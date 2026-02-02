@@ -39,4 +39,5 @@ class ContactController extends Controller
         Contact::create($contact);
         return view('thanks');
     }
+
 }

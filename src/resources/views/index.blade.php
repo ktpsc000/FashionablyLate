@@ -25,14 +25,14 @@
                     <input class="form__input--text-name" type="text" name="first_name" placeholder="例：山田" value="{{ $contact['first_name'] ?? old('first_name') }}">
                     <input class="form__input--text-name" type="text" name="last_name" placeholder="例：太郎" value="{{ $contact['last_name'] ?? old('last_name') }}">
                 </div>
-            </div>
-            <div class="form__error">
-                @error('first_name')
-                {{ $message }}
-                @enderror
-                @error('last_name')
-                {{ $message }}
-                @enderror
+                <div class="form__error , form__error-name" >
+                    @error('first_name')
+                    <span>{{ $message }}</span>
+                    @enderror
+                    @error('last_name')
+                    <span>{{ $message }}</span>
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="form__group-content">
                 <div class="form__input--radio">
                     @php
-                        $gender = session('contact.gender', old('gender'));
+                    $gender = session('contact.gender', old('gender'));
                     @endphp
                     <label>
                         <input type="radio" name="gender" value="1" {{ $gender == 1 ? 'checked' : '' }}>男性
@@ -57,11 +57,11 @@
                         <input type="radio" name="gender" value="3" {{ $gender == 3 ? 'checked' : '' }}>その他
                     </label>
                 </div>
-            </div>
-            <div class="form__error">
-                @error('gender')
-                {{ $message }}
-                @enderror
+                <div class="form__error">
+                    @error('gender')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -75,11 +75,11 @@
                 <div class="form__input--email">
                     <input type="text" name="email" placeholder="例：test@example.com" value="{{ $contact['email'] ?? old('email') }}">
                 </div>
-            </div>
-            <div class="form__error">
-                @error('email')
-                {{ $message }}
-                @enderror
+                <div class="form__error">
+                    @error('email')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -97,18 +97,17 @@
                     <span class="form__tel-sep">-</span>
                     <input type="tel" name="tel3" placeholder="5678" value="{{ $contact['tel3'] ?? old('tel3') }}">
                 </div>
-                <div class="form__error">
+                <div class="form__error , form__error-tel">
                     @error('tel1')
-                    {{ $message }}
+                    <span>{{ $message }}</span>
                     @enderror
                     @error('tel2')
-                    {{ $message }}
+                    <span>{{ $message }}</span>
                     @enderror
                     @error('tel3')
-                    {{ $message }}
+                    <span>{{ $message }}</span>
                     @enderror
                 </div>
-
             </div>
         </div>
 
@@ -122,11 +121,11 @@
                 <div class="form__input--text">
                     <input class="form__input--text-address" type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" value="{{ $contact['address'] ?? old('address') }}">
                 </div>
-            </div>
-            <div class="form__error">
-                @error('address')
-                {{ $message }}
-                @enderror
+                <div class="form__error">
+                    @error('address')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -151,7 +150,7 @@
             <div class="form__group-content">
                 <div class="form__input--select">
                     @php
-                        $selectedCategory = session('contact.category_id', old('category_id'));
+                    $selectedCategory = session('contact.category_id', old('category_id'));
                     @endphp
                     <select name="category_id">
                         <option value="" disabled selected hidden>選択してください</option>
@@ -162,11 +161,11 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
-            <div class="form__error">
-                @error('category_id')
-                {{ $message }}
-                @enderror
+                <div class="form__error">
+                    @error('category_id')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
 
@@ -180,11 +179,11 @@
                 <div class="form__input--textarea">
                     <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{ $contact['detail'] ?? old('detail') }}</textarea>
                 </div>
-            </div>
-            <div class="form__error">
-                @error('detail')
-                {{ $message }}
-                @enderror
+                <div class="form__error">
+                    @error('detail')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
         </div>
 

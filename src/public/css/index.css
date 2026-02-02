@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    color: #827469;
     height:100px;
     font-size: 24px;
 }
@@ -18,9 +18,9 @@
     width: 100%;
 }
 
-p,
 .form__label--item,
-.form__input--radio label {
+.form__input--radio label,
+select:has(option[value=""]:checked) {
     color: #827469;
 }
 
@@ -101,8 +101,18 @@ textarea{
 .form__error {
     color: red;
     font-size: 12px;
-    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
 }
+
+.form__error-name span{
+    width: 46%;
+}
+
+.form__error-tel span{
+    width: 26%;
+}
+
 
 .form__button {
     text-align: center;
@@ -116,4 +126,5 @@ textarea{
     border: none;
     cursor: pointer;
 }
+
 
