@@ -2,6 +2,7 @@
 
 ## 環境構築
 - `git clone git@github.com:ktpsc000/FashionablyLate.git`
+- `cd FashionablyLate`
 - `docker-compose up -d --build`
 
 ## Laravel環境構築
