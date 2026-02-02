@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #827469;
+    color: #8d7b6a;
     height:100px;
     font-size: 24px;
 }
@@ -18,10 +18,13 @@
     width: 100%;
 }
 
+.form__group-content input,
+.form__group-content label,
 .form__label--item,
-.form__input--radio label,
+.form__input--tel,
+.form__input--textarea textarea,
 select:has(option[value=""]:checked) {
-    color: #827469;
+    color: #8d7b6a;
 }
 
 .form__group {

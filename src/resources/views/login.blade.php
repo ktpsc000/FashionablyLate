@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
 @section('content')
 <div class="login__content">
     <div class="login__heading">
-        <h2>Login</h2>
+        <p>Login</p>
     </div>
     <form class="login-form" action="/login" method="post">
         @csrf

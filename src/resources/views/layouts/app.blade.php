@@ -8,6 +8,7 @@
     <title>FashionablyLate</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     @yield('css')
 </head>
 
@@ -31,7 +32,7 @@
                     <li class="header__nav--item">
                         <form class="form__logout" action="/logout" method="post">
                             @csrf
-                            <button type="submit" class="form__logout--button">ログアウト</button>
+                            <button type="submit" class="form__logout--button">logout</button>
                         </form>
                     </li>
                     @endif

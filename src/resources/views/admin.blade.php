@@ -10,7 +10,7 @@
 
 <div class="admin__content">
     <div class="admin__heading">
-        <h2>Admin</h2>
+        <p>Admin</p>
     </div>
 
     <!-- 検査フォーム -->
@@ -45,18 +45,21 @@
             <input class="search-form__item-input--date" type="date" name="created_at" value="{{ request('created_at') }}">
 
             <!-- 検索ボタン -->
-            <button class="search-form__item-button" type="submit">検索</button>
+            <button class="search-form__button-submit" type="submit">検索</button>
 
             <!-- リセットボタン -->
-            <a href="/reset" class="search-form__item-button--reset">リセット</a>
+            <a href="/reset" class="search-form__button-reset">リセット</a>
         </div>
     </form>
 
-    <!-- エクスポート -->
+
     <div class="content__middle">
-        <div class="export">
+        <!-- エクスポート -->
+        <div class="export__button">
             <a href="{{ url('/export') }}?{{ request()->getQueryString() }}">エクスポート</a>
         </div>
+
+        <!-- ページネーション -->
         <div class="pagination">
             {{ $contacts->links('vendor.pagination.bootstrap-4') }}
         </div>
@@ -70,6 +73,7 @@
                     <th class="contact-form__header"><span class="contact-form__header-span">性別</span></th>
                     <th class="contact-form__header"><span class="contact-form__header-span">メールアドレス</span></th>
                     <th class="contact-form__header"><span class="contact-form__header-span">お問い合わせの種類</span></th>
+                    <th class="contact-form__header"><span class="contact-form__header-span"></span></th>
             </tr>
 
             @foreach($contacts as $contact)
