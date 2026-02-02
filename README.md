@@ -17,6 +17,7 @@
 | 機能 | URL |
 |---|---|
 | お問い合わせ | http://localhost/ |
+| ユーザー登録 | http:://localhost/register |
 | phpMyAdmin | http://localhost:8080 |
 
 ## 使用技術(実行環境)
@@ -25,5 +26,6 @@
 - MySQL 8.0.26
 - nginx 1.21.1
 
+## ER図
 ![ER図](index.drawio.png)
 
