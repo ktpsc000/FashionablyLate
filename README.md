@@ -17,7 +17,7 @@
 | 機能 | URL |
 |---|---|
 | お問い合わせ | http://localhost/ |
-| ユーザー登録 | http:://localhost/register |
+| ユーザー登録 | http://localhost/register |
 | phpMyAdmin | http://localhost:8080 |
 
 ## 使用技術(実行環境)
