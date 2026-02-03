@@ -19,8 +19,8 @@ class ContactFactory extends Factory
 
         return [
             'category_id' => Category::inRandomOrder()->first()->id,
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
+            'first_name' => $this->faker->lastName(),
+            'last_name' => $this->faker->firstName(),
             'gender' => $this->faker->numberBetween(1,3),
             'email' => $this->faker->safeEmail(),
             'tel' => $this->faker->numerify('###########'),
